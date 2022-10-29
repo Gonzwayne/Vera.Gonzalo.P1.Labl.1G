@@ -47,3 +47,7 @@ int asignarEmpresaPorId(eEmpresa listaEmpresa[], int tam, int idEmpresa,
 
 	return todoOk;
 }
+
+
+
+

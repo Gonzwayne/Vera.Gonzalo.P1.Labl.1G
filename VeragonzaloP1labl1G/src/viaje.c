@@ -28,7 +28,7 @@ int buscarViaje(int id, int *pIndice, eViaje vec[], int tam) {
 
 }
 
-int altaViaje(int *nextIdViaje, eViaje vec[], int tam, eEmpresa listaEmpresas[],int tamEmp, eTipo listaTipos[], int tamTipo, eMicro listaMicros[],int tamMicros, eDestino listaDestinos[], int tamDestino)
+int altaViaje(int *nextIdViaje, eViaje vec[], int tam, eEmpresa listaEmpresas[],int tamEmp, eTipo listaTipos[], int tamTipo, eMicro listaMicros[],int tamMicros, eDestino listaDestinos[], int tamDestino, eChofer listaChofer[],int tamChofer)
 {
 	int todoOk = 0;
 	int indice;
@@ -39,7 +39,7 @@ int altaViaje(int *nextIdViaje, eViaje vec[], int tam, eEmpresa listaEmpresas[],
 			printf("No hay viaje \n");
 		} else {
 			auxViaje.id = *nextIdViaje;
-			mostrarMicros(listaMicros, tamMicros,listaEmpresas,tamEmp,listaTipos,tamTipo, 0);
+			mostrarMicros(listaMicros, tamMicros,listaEmpresas,tamEmp,listaTipos,tamTipo, 0,listaChofer,tamChofer);
 
 			utn_getNumero(&auxViaje.idMicro, "Ingrese id del micro: \n",
 					"Error reingrese id del micro \n", 100, 200, 3);

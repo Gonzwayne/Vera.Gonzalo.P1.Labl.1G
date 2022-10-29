@@ -25,8 +25,9 @@ int menu() {
 	printf("8-H- Alta de Viaje\n");
 	printf("9-I- Listar Viajes\n");
 	printf("10-J- Salir\n");
+	printf("11-K- Menu de Informes\n");
 	utn_getNumero(&opcion, "Ingrese una opcion: \n",
-			"Error reingrese opcion valida: \n", 1, 10, 100);
+			"Error reingrese opcion valida: \n", 1, 11, 100);
 	return opcion;
 }
 
@@ -175,6 +176,23 @@ int getString(char *pBuffer, int limite) {
 		}
 	}
 	return retorno;
+}
+
+
+int mostrarSubMenuInformes() {
+	int opcion;
+	system("cls");
+	printf("     *** Seleccione opcion a informar ***     \n\n");
+	printf("1- Mostrar Micros de la Empresa Seleccionada\n");
+	printf("2- Mostrar Micros de un tipo seleccionado\n");
+	printf("3- Informar Promedios de micros de tipo VIP sobre micros de una empresa\n");
+	printf("4- Mostrar listado de micros separados por empresa\n");
+	printf("5- Informar empresas que pueden transportar mas pasajeros\n");
+	printf("6- Mostrar empresa con menor cantidad de Micros\n");
+	fflush(stdin);
+	utn_getNumero(&opcion, "Ingrese Opcion: \n",
+			"Error Ingrese Opcion valida: \n", 1, 6, 4);
+	return opcion;
 }
 
 

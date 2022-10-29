@@ -16,6 +16,7 @@ int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo
 int esNumerica(char* cadena);
 int getInt(int* pResultado);
 int myGets(char* cadena, int longitud);
+int mostrarSubMenuInformes();
 
 
 

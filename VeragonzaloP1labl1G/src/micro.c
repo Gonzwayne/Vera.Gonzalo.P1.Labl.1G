@@ -6,6 +6,7 @@
 #include "empresa.h"
 #include "tipo.h"
 #include "micro.h"
+#include  "chofer.h"
 
 
 int inicializarMicro(eMicro vec[], int tam) {
@@ -71,7 +72,7 @@ int buscarVacio(int *pIndice, eMicro vec[], int tam) {
 }
 
 int modificarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
-		eTipo vecTipos[], int tamTipo) {
+		eTipo vecTipos[], int tamTipo,eChofer vecChofer[],int tamChofer) {
 	int todoOk = 0;
 	int id;
 	int indice;
@@ -90,7 +91,8 @@ int modificarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
 		if (indice == -1) {
 			printf("No existe un micro con el id: %d\n", id);
 		} else {
-			mostrarMicro(vec[indice], vecEmpresa, tamEmp, vecTipos, tamTipo);
+			mostrarMicro(vec[indice], vecEmpresa, tamEmp, vecTipos, tamTipo,vecChofer,tamChofer);
+			void mostrar(eMicro a, eEmpresa listaEmpresa[], int tamEmp,eTipo listaTipo[], int tamTipo,eChofer listaChofer[],int tamChofer);
 			printf("Confirma modificacion? :ingrese (s o n) \n");
 			fflush(stdin);
 			scanf("%c", &confirma);
@@ -141,18 +143,18 @@ int buscarMicro(int id, int *pIndice, eMicro vec[], int tam) {
 
 }
 
-void mostrarMicro(eMicro a, eEmpresa listaEmpresa[], int tamEmp,
-		eTipo listaTipo[], int tamTipo) {
+void mostrarMicro(eMicro a, eEmpresa listaEmpresa[], int tamEmp,eTipo listaTipo[], int tamTipo,eChofer listaChofer[],int tamChofer) {
 	char descEmp[50];
 	char descTip[50];
+	char descCho[50];
 	asignarEmpresaPorId(listaEmpresa, tamEmp, a.idEmpresa, descEmp);
 	asignarTipoPorId(listaTipo, tamTipo, a.idTipo, descTip);
-	printf("  %d        %s         %s         %d \n", a.id, descEmp, descTip,
-			a.capacidad);
+	asignarChoferPorId(listaChofer, tamChofer, a.idChofer, descCho);
+	printf("  %d        %s         %s         %d       %s \n", a.id, descEmp, descTip,
+			a.capacidad,descCho);
 }
 
-int mostrarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
-		eTipo vecTipos[], int tamTipo, int clear) {
+int mostrarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,eTipo vecTipos[], int tamTipo, int clear,eChofer vecChofer[],int tamChofer) {
 	int todoOk = 0;
 	int flag = 1;
 	if (vec != NULL && tam > 0 && clear >= 0 && clear <= 1) {
@@ -163,13 +165,13 @@ int mostrarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
 		printf(
 				"-------------------------------------------------------------\n");
 		printf(
-				"   id      Empresa       Tipo       Capacidad                 \n");
+				"   id      Empresa       Tipo       Capacidad        chofer  \n");
 		printf(
 				"-------------------------------------------------------------\n");
 
 		for (int i = 0; i < tam; i++) {
 			if (vec[i].isEmpty == 0) {
-				mostrarMicro(vec[i], vecEmpresa, tamEmp, vecTipos, tamTipo);
+				mostrarMicro(vec[i], vecEmpresa, tamEmp, vecTipos, tamTipo,vecChofer,tamChofer);
 				flag = 0;
 
 			}
@@ -184,7 +186,7 @@ int mostrarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
 }
 
 int bajaMicro(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
-		eTipo vecTipos[], int tamTipo) {
+		eTipo vecTipos[], int tamTipo,eChofer vecChofer[],int tamChofer) {
 	int todoOk = 0;
 	int id;
 	int indice;
@@ -193,7 +195,7 @@ int bajaMicro(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
 		system("cls");
 		printf("            *** Baja de Micro ***         \n");
 
-		mostrarMicros(vec, tam, vecEmpresa, tamEmp, vecTipos, tamTipo, 0);
+		mostrarMicros(vec, tam, vecEmpresa, tamEmp, vecTipos, tamTipo, 0,vecChofer,tamChofer);
 
 		utn_getNumero(&id, "Ingrese id : \n", "ERROR Ingrese id : \n", 1, 99999,
 				3);
@@ -203,7 +205,7 @@ int bajaMicro(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
 		if (indice == -1) {
 			printf("No existe un micro con el id: %d\n", id);
 		} else {
-			mostrarMicro(vec[indice], vecEmpresa, tamEmp, vecTipos, tamTipo);
+			mostrarMicro(vec[indice], vecEmpresa, tamEmp, vecTipos, tamTipo,vecChofer,tamChofer);
 			printf("Confirma Baja?: \n");
 			fflush(stdin);
 			scanf("%c", &confirma);
