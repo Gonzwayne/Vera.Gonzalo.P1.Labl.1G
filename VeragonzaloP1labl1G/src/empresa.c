@@ -34,7 +34,7 @@ int mostrarEmpresas(eEmpresa empresas[], int tam, int clear) {
 int asignarEmpresaPorId(eEmpresa listaEmpresa[], int tam, int idEmpresa,
 		char descripcionEmpresa[]) {
 	int todoOk = 0;
-	if (listaEmpresa != NULL && tam > 0 && descripcionEmpresa) {
+	if (listaEmpresa != NULL && tam > 0 && descripcionEmpresa !=NULL) {
 		for (int i = 0; i < tam; i++) {
 			if (listaEmpresa[i].id == idEmpresa) {
 				strcpy(descripcionEmpresa, listaEmpresa[i].descripcionEmpresa);

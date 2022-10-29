@@ -20,12 +20,12 @@ int inicializarMicro(eMicro vec[], int tam) {
 	return todoOk;
 }
 
-int altaMicro(int *nextId, eMicro vec[], int tam, eEmpresa vecEmpresa[],
-		int tamEmp, eTipo vecTipos[], int tamTipo) {
+int altaMicro(int *nextId, eMicro vec[], int tam, eEmpresa vecEmpresa[],int tamEmp, eTipo vecTipos[], int tamTipo) {
 	int todoOk = 0;
 	int indice;
 	eMicro auxMicro;
-	if (nextId != NULL && vec != NULL && tam > 0) {
+	if (nextId != NULL && vec != NULL && tam > 0 && vecEmpresa != NULL && tamEmp > 0
+			&& vecTipos != NULL && tamTipo > 0 ) {
 		buscarVacio(&indice, vec, tam);
 		if (indice == -1) {
 			printf("No hay lugar\n");
@@ -71,20 +71,19 @@ int buscarVacio(int *pIndice, eMicro vec[], int tam) {
 	return todoOk;
 }
 
-int modificarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
-		eTipo vecTipos[], int tamTipo,eChofer vecChofer[],int tamChofer) {
+ int modificarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,eTipo vecTipos[], int tamTipo,eChofer vecChofer[],int tamChofer) {
 	int todoOk = 0;
 	int id;
 	int indice;
 	char confirma = 's';
 
 	if (vec != NULL && tam > 0 && vecEmpresa != NULL && tamEmp > 0
-			&& vecTipos != NULL && tamTipo > 0) {
-		system("cls");
+			&& vecTipos != NULL && tamTipo > 0 && vecChofer !=NULL && tamChofer >0) {
+
 		printf("            *** Modificar Micros ***         \n");
 
 		utn_getNumero(&id, "Ingrese id del micro: \n",
-				"Error reingrese id del micro: \n", 150, 200, 3);
+				"Error reingrese id del micro: \n", 100, 200, 3);
 
 		indice = buscarLibre(id, vec, tam);
 
@@ -92,7 +91,7 @@ int modificarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
 			printf("No existe un micro con el id: %d\n", id);
 		} else {
 			mostrarMicro(vec[indice], vecEmpresa, tamEmp, vecTipos, tamTipo,vecChofer,tamChofer);
-			void mostrar(eMicro a, eEmpresa listaEmpresa[], int tamEmp,eTipo listaTipo[], int tamTipo,eChofer listaChofer[],int tamChofer);
+
 			printf("Confirma modificacion? :ingrese (s o n) \n");
 			fflush(stdin);
 			scanf("%c", &confirma);
@@ -157,7 +156,7 @@ void mostrarMicro(eMicro a, eEmpresa listaEmpresa[], int tamEmp,eTipo listaTipo[
 int mostrarMicros(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,eTipo vecTipos[], int tamTipo, int clear,eChofer vecChofer[],int tamChofer) {
 	int todoOk = 0;
 	int flag = 1;
-	if (vec != NULL && tam > 0 && clear >= 0 && clear <= 1) {
+	if (vec != NULL && tam > 0 && clear >= 0 && clear <= 1 && vecChofer != NULL && tamChofer >0) {
 		if (clear) {
 			system("cls");
 		}
@@ -191,7 +190,8 @@ int bajaMicro(eMicro vec[], int tam, eEmpresa vecEmpresa[], int tamEmp,
 	int id;
 	int indice;
 	char confirma = 's';
-	if (vec != NULL && tam > 0) {
+	if (vec != NULL && tam > 0 && vecEmpresa != NULL && tamEmp > 0
+			&& vecTipos != NULL && tamTipo > 0 && vecChofer !=NULL && tamChofer >0) {
 		system("cls");
 		printf("            *** Baja de Micro ***         \n");
 

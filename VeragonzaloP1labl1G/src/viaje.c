@@ -33,7 +33,7 @@ int altaViaje(int *nextIdViaje, eViaje vec[], int tam, eEmpresa listaEmpresas[],
 	int todoOk = 0;
 	int indice;
 	eViaje auxViaje;
-	if (nextIdViaje != NULL && vec != NULL && tam > 0 && listaEmpresas !=NULL && tamEmp >0 && listaTipos !=NULL && tamTipo >0 && listaMicros !=NULL && tamMicros >0 && listaDestinos !=NULL && tamDestino >0) {
+	if (nextIdViaje != NULL && vec != NULL && tam > 0 && listaEmpresas !=NULL && tamEmp >0 && listaTipos !=NULL && tamTipo >0 && listaMicros !=NULL && tamMicros >0 && listaDestinos !=NULL && tamDestino >0,listaChofer != NULL && tamChofer >0) {
 		buscarViajeVacio(&indice, vec, tam);
 		if (indice == 1) {
 			printf("No hay viaje \n");
